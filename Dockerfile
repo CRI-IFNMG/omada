@@ -15,7 +15,10 @@ WORKDIR /tmp
 
 # Baixar a versão fixa do Omada Controller com mais debug
 RUN echo "Iniciando download do Omada Controller..." && \
-    wget -nv "https://static.tp-link.com/upload/software/2025/202504/20250425/20250425/Omada_SDN_Controller_v5.15.20.20_linux_x64_20250416110546.tar.gz" -O Omada.tar.gz && \
+    # wget -nv "https://static.tp-link.com/upload/software/2025/202504/20250425/20250425/Omada_SDN_Controller_v5.15.20.20_linux_x64_20250416110546.tar.gz" -O Omada.tar.gz && \
+    wget -nv "https://static.tp-link.com/upload/software/2025/202504/20250425/Omada_SDN_Controller_v5.15.20.20_linux_x64_20250416110546.tar.gz" -O Omada.tar.gz && \
+
+    
     if [ $? -ne 0 ]; then echo "Erro ao baixar o arquivo"; exit 1; fi && \
     echo "Download concluído, descompactando..." && \
     tar -xvf Omada.tar.gz && \
