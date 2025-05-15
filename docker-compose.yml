@@ -3,7 +3,7 @@ version: '3.8'
 services:
   omada:
     build: .
-    container_name: omada-controller
+    # container_name: omada-controller
     ports:
       - "8088:8088"
       - "8043:8043"
@@ -22,7 +22,7 @@ services:
 
   mongodb:
     image: mongo:4.4
-    container_name: omada-mongodb
+    # container_name: omada-mongodb
     ports:
       - "27017:27017"
     volumes:
