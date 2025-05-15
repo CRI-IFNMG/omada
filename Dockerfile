@@ -4,13 +4,16 @@ FROM debian:bullseye-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV OMADA_DIR=/opt/tplink/EAPController
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+ENV PATH="${JAVA_HOME}/bin:${PATH}"
 
-# Instalar dependências
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates wget unzip gosu net-tools tzdata openjdk-17-jre-headless \
-    grep sed tar coreutils curl \
-    jsvc curl vim && \
+    jsvc curl vim \
+    grep sed tar coreutils curl procps && \
+    ln -s /usr/lib/jvm/java-17-openjdk-* /usr/lib/jvm/java-17-openjdk-amd64 || true && \
     rm -rf /var/lib/apt/lists/*
+
 
 WORKDIR /tmp
 
@@ -35,4 +38,4 @@ RUN echo "Iniciando download do Omada Controller..." && \
 WORKDIR ${OMADA_DIR}
 
 # Comando final para iniciar o Omada
-CMD ["bash", "-c", "bash ${OMADA_DIR}/bin/control.sh start && tail -f logs/server.log"]
+CMD ["bash", "-c", "bash ${OMADA_DIR}/bin/control.sh start && tail -f ${OMADA_DIR}/logs/server.log"]
