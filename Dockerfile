@@ -8,7 +8,8 @@ ENV OMADA_DIR=/opt/tplink/EAPController
 # Instalar dependências
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates wget unzip gosu net-tools tzdata openjdk-17-jre-headless \
-    grep sed tar coreutils curl && \
+    grep sed tar coreutils curl \
+    jsvc curl vim && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /tmp
@@ -34,4 +35,4 @@ RUN echo "Iniciando download do Omada Controller..." && \
 WORKDIR ${OMADA_DIR}
 
 # Comando final para iniciar o Omada
-CMD ["bash", "-c", "bash bin/control.sh start && tail -f logs/server.log"]
+CMD ["bash", "-c", "bash ${OMADA_DIR}/bin/control.sh start && tail -f logs/server.log"]
