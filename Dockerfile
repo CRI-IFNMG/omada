@@ -39,4 +39,6 @@ WORKDIR ${OMADA_DIR}
 
 # Comando final para iniciar o Omada
 # CMD ["bash", "-c", "bash ${OMADA_DIR}/bin/control.sh start && tail -f ${OMADA_DIR}/logs/server.log"]
-CMD ["bash", "-c", "bash /code/install.sh"]
+# CMD ["bash", "-c", "bash /code/install.sh"]
+CMD ["bash", "-c", "bash /install_omada.sh"]
+# /opt/tplink/EAPController/install_omada.sh
