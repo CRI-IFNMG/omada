@@ -30,5 +30,6 @@ echo "Iniciando download do Omada Controller..." && \
 
 
 # Comando final para iniciar o Omada
-# CMD ["bash", "-c", "bash ${OMADA_DIR}/bin/control.sh start && tail -f ${OMADA_DIR}/logs/server.log"]
-bash -c /code/install.sh && tail -f ${OMADA_DIR}/logs/server.log
+CMD ["bash", "-c", "bash ${OMADA_DIR}/bin/control.sh start && tail -f ${OMADA_DIR}/logs/server.log"]
+# bash -c ${OMADA_DIR}/install_omada.sh && tail -f ${OMADA_DIR}/logs/server.log
+# bash -c /code/install.sh && tail -f ${OMADA_DIR}/logs/server.log
