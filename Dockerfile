@@ -30,14 +30,10 @@ RUN echo "Iniciando download do Omada Controller..." && \
     mkdir -p ${OMADA_DIR} && \
     cd Omada_SDN_Controller_* && \
     cp -r bin data lib properties install.sh uninstall.sh "${OMADA_DIR}" && \
-    # Após copiar os arquivos
     cp -r "${OMADA_DIR}" /opt/tplink/EAPController_template
 
 COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-
-CMD ["/entrypoint.sh"]
-
+RUN chmod +x /entrypoint.sh \
     echo "mongo.external=true" >> "${OMADA_DIR}/properties/omada.properties" && \
     echo "eap.mongod.uri=mongodb://omada-mongodb:27017/omada" >> "${OMADA_DIR}/properties/omada.properties" && \
     chmod -R 777 "${OMADA_DIR}/properties" && \
