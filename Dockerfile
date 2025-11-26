@@ -33,8 +33,8 @@ RUN echo "Iniciando download do Omada Controller..." && \
     cp -r "${OMADA_DIR}" /opt/tplink/EAPController_template
 
 COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh \
-    echo "mongo.external=true" >> "${OMADA_DIR}/properties/omada.properties" && \
+RUN chmod +x /entrypoint.sh
+RUN echo "mongo.external=true" >> "${OMADA_DIR}/properties/omada.properties" && \
     echo "eap.mongod.uri=mongodb://omada-mongodb:27017/omada" >> "${OMADA_DIR}/properties/omada.properties" && \
     chmod -R 777 "${OMADA_DIR}/properties" && \
     rm -rf /tmp/*
