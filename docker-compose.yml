@@ -1,9 +1,6 @@
-version: '3.8'
-
 services:
   omada:
     build: .
-    # container_name: omada-controller
     ports:
       - "8088:8088"
       - "8043:8043"
@@ -17,18 +14,13 @@ services:
     environment:
       - OMADA_MONGO_URI=mongodb://mongodb:27017/omada
     volumes:
-      - omada-data:/opt/tplink/EAPController
+      - ./data/omada:/opt/tplink/EAPController
     restart: unless-stopped
 
   mongodb:
     image: mongo:4.4
-    # container_name: omada-mongodb
     ports:
       - "27017:27017"
     volumes:
-      - mongo-data:/data/db
+      - ./data/db:/data/db
     restart: unless-stopped
-
-volumes:
-  omada-data:
-  mongo-data:
