@@ -14,7 +14,7 @@ services:
     environment:
       - OMADA_MONGO_URI=mongodb://mongodb:27017/omada
     volumes:
-      - ./data/omada:/opt/tplink/EAPController
+      - ./data/omada:/opt/tplink/EAPController/data
       - ./install.sh:/opt/tplink/EAPController/install_omada.sh
     restart: unless-stopped
 
